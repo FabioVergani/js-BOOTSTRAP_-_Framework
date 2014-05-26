@@ -1,0 +1,38 @@
+console.stamp=function(){
+	var m=Array.prototype.slice.call(arguments);m.unshift(Date.now());console.log.apply(this,m);
+	return console.stamp;
+};
+
+
+console.clear();
+//===================================
+(function boot(global){'use strict';
+ var undefined=void(0),
+ $=global.document,
+ $id=function(s){return $.getElementById(s)},
+ $name=function(s,i){var m=$.getElementsByName(s);return i===undefined?m:m[i]},
+ unid=(function(p){return function(e){var n=e[p]||0;e[p]=++n;return n}})('uid-n'),
+ listenOnce=function(e,l,f){var n=unid(e);n='f'+n;e.addEventListener(l,e[n]=(function(x){f(x);e.removeEventListener(l,e[n],0)}),0)},
+ whenDomLoaded=function(e,f){listenOnce(e,'DOMContentLoaded',f)},
+ whenLoaded=function(e,f){listenOnce(e,'load',f)};
+ //
+ var init=function(evt){console.stamp('document -dom- is ready!');
+
+	var $html=$.documentElement,m=$html.childNodes,$head=m[0],$body=m[1]//$.body||m[0]
+
+	console.log('%o',$html,$head,$body);
+
+ };
+ //
+ var start=function(evt){console.stamp('document is fully loaded!');
+	 // evt.srcElement === $ →true
+ };
+ //
+ whenDomLoaded(global,init);
+ whenLoaded(global,start);
+})(window);
+//============
+
+
+
+
