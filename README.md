@@ -1,2 +1,2 @@
-js-BOOTSTRAP_-_Framework
+js-BOOTSTRAP Framework
 ========================
