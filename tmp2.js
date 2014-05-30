@@ -1,6 +1,5 @@
 /*
-String.repeat=function(s,n){var t='';if(n>1){while(n>0){if(n%2===1){t+=s};s+=s;n>>=1}}else{t=n<=0?'':s};return t};
-String.padN=function(s,i,t){return i===0||t.length===0?s:String.repeat(t,i-s.length)+s};
+
 */
 
 /*
@@ -49,9 +48,15 @@ Memo Caratteri speciali:
 
 //
 (function(o){
+ o.repeat=function(s,n){var t='';if(n>1){while(n>0){if(n%2===1){t+=s};s+=s;n>>=1}}else{t=n<=0?'':s};return t};
+ o.padN=function(s,i,t){return i===0||t.length===0?s:o.repeat(t,i-s.length)+s};
+})(String);
+
+//
+(function(o){
  Object.defineGetter(o,'pick',function(){
-  var t=new o(),f=function(s,i){s=String(t['get'+s]());return s.length===i?'0'+s:s};
-  return{toString:function(){return [f('Hours',1),f('Minutes',1),f('Seconds',1),f('Milliseconds',2)].join(':')},date:t}
+  var t=new o(),f=function(s,i){s=String(t['get'+s]());return String.padN(s,i,'0')};
+  return{toString:function(){return [f('Hours',2),f('Minutes',2),f('Seconds',2),f('Milliseconds',3)].join(':')},date:t}
  });
 })(Date);
 //====================================================================================================================================================
