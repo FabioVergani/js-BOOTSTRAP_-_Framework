@@ -1,2 +1,2 @@
-js-BOOTSTRAP Framework
+basi ed idee, draft per Framework js
 ========================
