@@ -1,3 +1,4 @@
+
 function cally(x){return Function.prototype.call.bind(x);}
 //
 function isFunction(x){return x instanceof Function;}
@@ -15,8 +16,7 @@ var framework = {
  PolyfillMethod=lib.fix.PolyfillMethod=function(obj,prop,f){var o=obj,p=prop;if(hasOwnMethod(o,p) !== true){o[p]=f;}};
  expose=null;
 
- PolyfillMethod(O,"createz",function(x){function F(){}F.prototype=x||{};return new F;});
- PolyfillMethod(O,"createz",function(x){return new (function F(){},F.prototype=x||{},F());});
+ PolyfillMethod(O,"createz",function(x){function F(){};F.prototype=x||{};return new F();});
 
 
 })(Object,framework);
