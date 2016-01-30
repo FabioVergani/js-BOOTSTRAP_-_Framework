@@ -15,3 +15,13 @@ p='log';w[p]=c[p].bind(c);
 p='dir';w[p]=c[p].bind(c);
 c.clear();
 })(window);
+
+...
+(function(w){
+var o=w,c=o.console;
+o.log=c.log.bind(c);
+o.dir=c.dir.bind(c);
+c.clear();
+})(window);
+
+log(1);
