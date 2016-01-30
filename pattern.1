@@ -4,3 +4,14 @@ void((function(scope){'use strict';
 
 })(window));
  //#END
+
+
+
+...
+
+(function(w){
+var o=w, p='console', c=o[p];
+p='log';w[p]=c[p].bind(c);
+p='dir';w[p]=c[p].bind(c);
+c.clear();
+})(window);
